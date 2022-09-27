@@ -15,3 +15,9 @@ export function getMonth(month = dayjs().month()) {
     });
     return daysMatrix;
 }
+
+export function getMonthName(month = dayjs().month()) {
+    month = Math.floor(month);
+    const monthName = dayjs().month();
+    return monthName;
+}

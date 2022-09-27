@@ -1,7 +1,6 @@
 
 
 export default function Day({ day }:any) {
-    console.log(day)
   return (
     <div className="flex flex-col border border-gray-200">
       <header className="flex flex-row items-center justify-evenly">
