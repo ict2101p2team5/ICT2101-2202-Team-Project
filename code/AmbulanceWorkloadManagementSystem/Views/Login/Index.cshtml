@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+}
+
+@model AmbulanceWorkloadManagementSystem.Models.LoginViewModel
+
+<div class="row">
+    <div class="col-6 col-lg-3 mx-auto">
+        <h1 class="display-4">Login</h1>
+        @if (@ViewBag.VerifyOTP == true)
+        {
+            @using (Html.BeginForm("VerifyOTP", "Login", FormMethod.Post))  
+            {
+                <div class="form-group mb-3">
+                    <label for="employeeID">One Time Password</label>
+                    @Html.TextBoxFor(m => m.OTP!.OneTimePassword, new { @class = "form-control", type = "text", placeholder = "Enter One Time Password" })
+                </div>
+                <button type="submit" class="btn btn-primary">Verify</button>
+            }
+            @if (@ViewBag.Alert != null)
+            {
+                <div class="alert alert-danger mt-5" role="alert">
+                    @ViewBag.Alert
+                </div>
+            }
+        }
+        else
+        {
+            @using (Html.BeginForm("VerifyLogin", "Login", FormMethod.Post))  
+            {
+                <div class="form-group mb-1">
+                    <label for="employeeID">Employee ID</label>
+                    @Html.TextBoxFor(m => m.User!.EmployeeID, new { @class = "form-control", type = "text", placeholder = "Enter Employee ID" })
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Password</label>
+                    @Html.TextBoxFor(m => m.User!.Password, new { @class = "form-control", type = "password", placeholder = "Enter Password" })
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            }
+            @if (@ViewBag.Alert != null)
+            {
+                <div class="alert alert-danger mt-5" role="alert">
+                    @ViewBag.Alert
+                </div>
+            }
+        }
+    </div> 
+</div>
